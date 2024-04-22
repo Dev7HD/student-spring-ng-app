@@ -1,0 +1,23 @@
+.login-container{
+  max-width: 400px;
+  margin: auto;
+}
+
+.login-content{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 15px auto;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+mat-card-actions{
+  margin: auto;
+}
+
+.container{
+  margin-top: 30px;
+}

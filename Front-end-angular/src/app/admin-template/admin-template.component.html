@@ -1,0 +1,59 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="sideMenu.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-button routerLink="//home">
+    <mat-icon>home</mat-icon>
+    Home
+  </button>
+  <button mat-button routerLink="/profile">
+    <mat-icon>account_box</mat-icon>
+    Profile
+  </button>
+  <button mat-button [matMenuTriggerFor]="importMenu">
+    <mat-icon>cloud_upload</mat-icon>
+    Import
+    <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+  </button>
+  <mat-menu #importMenu>
+    <button mat-menu-item routerLink="/loadStudents">
+      <mat-icon>supervisor_account</mat-icon>
+      Load students
+    </button>
+    <button mat-menu-item routerLink="/loadPayments">
+      <mat-icon>payment</mat-icon>
+      Load payments
+    </button>
+  </mat-menu>
+  <span style="flex: auto"></span>
+  <button mat-raised-button>Logout</button>
+</mat-toolbar>
+<mat-drawer-container>
+  <mat-drawer #sideMenu opened="true" mode="side" position="start">
+    <mat-list>
+      <mat-list-item>
+        <button mat-button routerLink="/dashboard">
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/students">
+          <mat-icon>account_box</mat-icon>
+          Students
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/payments">
+          <mat-icon>attach_money</mat-icon>
+          Payments
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div style="height: 100vh">
+      <router-outlet> </router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
