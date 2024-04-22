@@ -20,6 +20,6 @@ public class Student {
     private String code;
     private String programId;
     private String picture;
-    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     private List<Payment> payments;
 }
