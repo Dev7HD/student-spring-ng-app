@@ -20,12 +20,12 @@ public class Payment {
     private String id;
     @Temporal(TemporalType.DATE)
     private LocalDate date;
-    private double receipt;
+    private double amount;
     @Enumerated(EnumType.STRING)
     private PaymentType type;
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
-    private String recipe;
+    private String receipt;
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Student student;

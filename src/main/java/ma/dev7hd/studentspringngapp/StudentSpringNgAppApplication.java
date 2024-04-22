@@ -55,12 +55,12 @@ public class StudentSpringNgAppApplication {
                 for (int i = 0; i < 4; i++) {
                     double random = Math.random();
                     Payment payment = Payment.builder()
-                            .receipt(random * 100000)
+                            .amount(random * 100000)
                             .student(student)
                             .date(LocalDate.now())
                             .type(random >= 0.75 ? PaymentType.CASH : random >= 0.5 ? PaymentType.CHECK : random >= 0.25 ? PaymentType.DEPOSIT : PaymentType.TRANSFER)
                             .status(random >= 0.66 ? PaymentStatus.VALIDATED : random >= 0.33 ? PaymentStatus.CREATED : PaymentStatus.REJECTED )
-                            .recipe("./static/recipes").build();
+                            .receipt("./static/recipes").build();
                     paymentRepository.save(payment);
                 }
             });
