@@ -6,7 +6,6 @@ import ma.dev7hd.studentspringngapp.entities.Payment;
 import ma.dev7hd.studentspringngapp.enumirat.PaymentStatus;
 import ma.dev7hd.studentspringngapp.enumirat.PaymentType;
 import ma.dev7hd.studentspringngapp.repositories.PaymentRepository;
-import ma.dev7hd.studentspringngapp.repositories.StudentRepository;
 import ma.dev7hd.studentspringngapp.services.PaymentService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
