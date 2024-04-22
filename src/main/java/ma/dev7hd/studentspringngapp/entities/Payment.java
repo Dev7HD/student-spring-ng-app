@@ -1,6 +1,5 @@
 package ma.dev7hd.studentspringngapp.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,7 +8,6 @@ import ma.dev7hd.studentspringngapp.enumirat.PaymentType;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @AllArgsConstructor
@@ -22,7 +20,7 @@ public class Payment {
     private String id;
     @Temporal(TemporalType.DATE)
     private LocalDate date;
-    private double amount;
+    private double receipt;
     @Enumerated(EnumType.STRING)
     private PaymentType type;
     @Enumerated(EnumType.STRING)

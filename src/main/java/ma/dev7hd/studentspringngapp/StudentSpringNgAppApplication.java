@@ -55,7 +55,7 @@ public class StudentSpringNgAppApplication {
                 for (int i = 0; i < 4; i++) {
                     double random = Math.random();
                     Payment payment = Payment.builder()
-                            .amount(random * 100000)
+                            .receipt(random * 100000)
                             .student(student)
                             .date(LocalDate.now())
                             .type(random >= 0.75 ? PaymentType.CASH : random >= 0.5 ? PaymentType.CHECK : random >= 0.25 ? PaymentType.DEPOSIT : PaymentType.TRANSFER)

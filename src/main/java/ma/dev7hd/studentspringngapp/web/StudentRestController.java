@@ -26,7 +26,7 @@ public class StudentRestController {
 
     /**
      * Find all students by program
-     * @param programId
+     * @param programId is student program id
      * @return List<Student>
      */
     @GetMapping(path = "/students/{programId}")
@@ -36,8 +36,8 @@ public class StudentRestController {
 
     /**
      * Find student by his code
-     * @param code
-     * @return
+     * @param code is student code
+     * @return Optional<Student>
      */
     @GetMapping(path = "/student/{code}")
     public Optional<Student> getStudentByCode(@PathVariable String code) {
