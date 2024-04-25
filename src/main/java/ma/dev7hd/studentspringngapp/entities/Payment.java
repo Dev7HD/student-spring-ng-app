@@ -1,6 +1,5 @@
 package ma.dev7hd.studentspringngapp.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import ma.dev7hd.studentspringngapp.enumirat.PaymentStatus;
