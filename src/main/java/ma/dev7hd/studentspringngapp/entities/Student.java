@@ -1,5 +1,6 @@
 package ma.dev7hd.studentspringngapp.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
@@ -19,7 +20,7 @@ public class Student {
     @Column(unique = true)
     private String code;
     private String programId;
-    private String picture;
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Payment> payments;
 }

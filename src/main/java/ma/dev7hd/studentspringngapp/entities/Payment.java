@@ -27,6 +27,5 @@ public class Payment {
     private PaymentStatus status;
     private String receipt;
     @ManyToOne
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Student student;
 }

@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 @AllArgsConstructor
 public class PaymentRestController {
     private PaymentRepository paymentRepository;

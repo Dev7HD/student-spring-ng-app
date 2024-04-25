@@ -24,7 +24,17 @@ import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
-import {AuthGuard} from "./gards/auth.guard";
+import {AuthGuard} from "./guards/auth.guard";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {AuthService} from "./services/auth.service";
+import {AuthorizationGuard} from "./guards/authorization.guard";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
+import {MatSort, MatSortHeader} from "@angular/material/sort";
+import { LoadingToastComponent } from './loading-toast/loading-toast.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {AppInterceptor} from "./interceptors/app.interceptor";
 
 @NgModule({
   declarations: [
@@ -37,7 +47,8 @@ import {AuthGuard} from "./gards/auth.guard";
     LoginComponent,
     StudentsComponent,
     PaymentsComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoadingToastComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +65,17 @@ import {AuthGuard} from "./gards/auth.guard";
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatSlideToggleModule,
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSort,
+    MatSortHeader,
+    MatProgressBarModule
   ],
   providers: [
-    provideAnimationsAsync(), AuthGuard
+    provideAnimationsAsync(), AuthGuard, AuthorizationGuard,
+    {provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

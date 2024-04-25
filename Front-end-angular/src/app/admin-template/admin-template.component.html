@@ -10,7 +10,7 @@
     <mat-icon>account_box</mat-icon>
     Profile
   </button>
-  <button mat-button [matMenuTriggerFor]="importMenu">
+  <button mat-button [matMenuTriggerFor]="importMenu" *ngIf="authService.roles.includes('ADMIN')">
     <mat-icon>cloud_upload</mat-icon>
     Import
     <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>

@@ -3,6 +3,7 @@ package ma.dev7hd.studentspringngapp.web;
 import lombok.AllArgsConstructor;
 import ma.dev7hd.studentspringngapp.entities.Student;
 import ma.dev7hd.studentspringngapp.repositories.StudentRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 @AllArgsConstructor
 public class StudentRestController {
     private StudentRepository studentRepository;
@@ -19,7 +21,7 @@ public class StudentRestController {
      * Find all students
      * @return List<Student>
      */
-    @GetMapping(path = "/students")
+    @GetMapping(path = "/students/all")
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
@@ -39,7 +41,7 @@ public class StudentRestController {
      * @param code is student code
      * @return Optional<Student>
      */
-    @GetMapping(path = "/student/{code}")
+    @GetMapping(path = "/students/{code}")
     public Optional<Student> getStudentByCode(@PathVariable String code) {
         return studentRepository.findStudentByCode(code);
     }
