@@ -1,10 +1,10 @@
-# Student Payment Application
+# 🎓 Student Payment Application
 
 Welcome to the Student Payment Application documentation. This application allows you to manage students and their payments efficiently. Below, you'll find detailed information on how to navigate and utilize the various features offered by the application.
 
-## Table of Contents
+## 📋 Table of Contents
 
-- [Features Overview](#features-overview)
+- [Features Overview](#-features-overview)
 - [Backend Documentation](#backend-documentation)
   - [Endpoints](#endpoints)
   - [Entities](#entities)
@@ -22,7 +22,7 @@ Welcome to the Student Payment Application documentation. This application allow
 - [Usage](#usage)
 - [Contributing](#contributing)
 
-## Features Overview
+## 🚀 Features Overview
 
 - Visualize list of students and their payments.
 - Import students list and payments list.
