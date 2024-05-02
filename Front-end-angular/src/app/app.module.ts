@@ -26,15 +26,18 @@ import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AuthGuard} from "./guards/auth.guard";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import {AuthService} from "./services/auth.service";
 import {AuthorizationGuard} from "./guards/authorization.guard";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatTableModule} from "@angular/material/table";
-import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
+import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
 import { LoadingToastComponent } from './loading-toast/loading-toast.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {AppInterceptor} from "./interceptors/app.interceptor";
+import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
+import { UpdatePaymentStatusComponent } from './update-payment-status/update-payment-status.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,8 @@ import {AppInterceptor} from "./interceptors/app.interceptor";
     StudentsComponent,
     PaymentsComponent,
     DashboardComponent,
-    LoadingToastComponent
+    LoadingToastComponent,
+    UpdatePaymentStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +75,13 @@ import {AppInterceptor} from "./interceptors/app.interceptor";
     MatPaginatorModule,
     MatSort,
     MatSortHeader,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogContent,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [
     provideAnimationsAsync(), AuthGuard, AuthorizationGuard,

@@ -1,0 +1,39 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Update payment status</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="payment-info-container">
+        <div class="info">
+          <div class="payment-info">
+            <p>Payment id:</p><p class="data">{{paymentId}}</p>
+          </div>
+          <div class="payment-info">
+            <p>Payment amount:</p><p class="data">{{payment.amount}} DH</p>
+          </div>
+          <div class="payment-info">
+            <p>Payment Date:</p><p class="data">{{payment.date}}</p>
+          </div>
+          <div class="payment-info">
+            <p>Payment type:</p><p class="data">{{payment.type}}</p>
+          </div>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Select payment status</mat-label>
+            <mat-select [(value)]="paymentStatus">
+              <mat-option value="CREATED">CREATED</mat-option>
+              <mat-option value="VALIDATED">VALIDATED</mat-option>
+              <mat-option value="REJECTED">REJECTED</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="buttons">
+        <button mat-raised-button (click)="updatePaymentStatus()">Save</button>
+        <button mat-raised-button (click)="paymentsPage()" >Cancel</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

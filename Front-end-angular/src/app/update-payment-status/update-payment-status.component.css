@@ -1,0 +1,30 @@
+mat-card-title{
+  margin-bottom: 15px;
+}
+.payment-info{
+  display: flex;
+  flex-direction: row;
+}
+
+.payment-info .data{
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.payment-info-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.info{
+  margin-right: 20px;
+}
+
+.buttons{
+  margin-top: 15px;
+}
+
+.buttons button{
+  margin-right: 10px;
+}
