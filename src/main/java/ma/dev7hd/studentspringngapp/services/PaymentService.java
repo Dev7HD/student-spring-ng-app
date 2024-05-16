@@ -1,10 +1,10 @@
 package ma.dev7hd.studentspringngapp.services;
 
 import lombok.AllArgsConstructor;
+import ma.dev7hd.studentspringngapp.dtos.NewPaymentDTO;
 import ma.dev7hd.studentspringngapp.entities.Payment;
 import ma.dev7hd.studentspringngapp.entities.Student;
 import ma.dev7hd.studentspringngapp.enumirat.PaymentStatus;
-import ma.dev7hd.studentspringngapp.enumirat.PaymentType;
 import ma.dev7hd.studentspringngapp.repositories.PaymentRepository;
 import ma.dev7hd.studentspringngapp.repositories.StudentRepository;
 import org.springframework.http.MediaType;
@@ -18,7 +18,6 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -29,13 +28,13 @@ public class PaymentService {
     private PaymentRepository paymentRepository;
     private StudentRepository studentRepository;
 
-    public ResponseEntity<Payment> newPayment(String studentCode, double amount, PaymentType paymentType, LocalDate date,
+    public ResponseEntity<Payment> newPayment(NewPaymentDTO newPaymentDTO,
                                               MultipartFile file) throws IOException {
         if (!file.getContentType().equals(MediaType.APPLICATION_PDF_VALUE)) {
             return ResponseEntity.badRequest().build();
         }
 
-        Optional<Student> optionalStudent = studentRepository.findStudentByCode(studentCode);
+        Optional<Student> optionalStudent = studentRepository.findStudentByCode(newPaymentDTO.getStudentCode());
         if (optionalStudent.isPresent()) {
             Student student = optionalStudent.get();
             Path folderPath = Paths.get(System.getProperty("user.home"),"data","payments");
@@ -46,10 +45,10 @@ public class PaymentService {
             Path filePath = Paths.get(folderPath.toString(),fileName+".pdf");
             Files.copy(file.getInputStream(),filePath);
             Payment payment = Payment.builder()
-                    .amount(amount)
+                    .amount(newPaymentDTO.getAmount())
                     .student(student)
-                    .type(paymentType)
-                    .date(date)
+                    .type(newPaymentDTO.getPaymentType())
+                    .date(newPaymentDTO.getDate())
                     .status(PaymentStatus.CREATED)
                     .receipt(filePath.toUri().toString())
                     .build();

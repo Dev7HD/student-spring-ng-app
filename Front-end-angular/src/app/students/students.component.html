@@ -31,6 +31,13 @@
           <td mat-cell *matCellDef="let element"> {{element.programId}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="studentDetails">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header > Student details </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button (click)="studentDetails(element)">Details</button>
+          </td>
+        </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>

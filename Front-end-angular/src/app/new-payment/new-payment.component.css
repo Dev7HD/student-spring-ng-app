@@ -1,0 +1,14 @@
+.payment-form{
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form{
+  max-width: 60%;
+}
+
+mat-card-header{
+  margin-bottom: 20px;
+}

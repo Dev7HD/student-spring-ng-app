@@ -23,7 +23,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthGuard} from "./guards/auth.guard";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {AuthorizationGuard} from "./guards/authorization.guard";
@@ -36,10 +36,14 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {AppInterceptor} from "./interceptors/app.interceptor";
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatSelectModule} from "@angular/material/select";
-import {MatOptionModule} from "@angular/material/core";
+import {MatOptionModule, provideNativeDateAdapter} from "@angular/material/core";
 import { UpdatePaymentStatusComponent } from './update-payment-status/update-payment-status.component';
+import { StudentDetailsComponent } from './student-details/student-details.component';
+import { NewPaymentComponent } from './new-payment/new-payment.component';
+import { MatDatepickerInput, MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     AdminTemplateComponent,
@@ -52,7 +56,9 @@ import { UpdatePaymentStatusComponent } from './update-payment-status/update-pay
     PaymentsComponent,
     DashboardComponent,
     LoadingToastComponent,
-    UpdatePaymentStatusComponent
+    UpdatePaymentStatusComponent,
+    StudentDetailsComponent,
+    NewPaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -81,12 +87,14 @@ import { UpdatePaymentStatusComponent } from './update-payment-status/update-pay
     MatDialogTitle,
     MatDialogContent,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatDatepickerInput,
+    MatDatepickerModule,
+    FormsModule,
   ],
   providers: [
-    provideAnimationsAsync(), AuthGuard, AuthorizationGuard,
+    provideAnimationsAsync(), AuthGuard, AuthorizationGuard, provideNativeDateAdapter(),
     {provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true}
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
 export class AppModule { }

@@ -31,7 +31,7 @@ public class StudentRestController {
      * @param programId is student program id
      * @return List<Student>
      */
-    @GetMapping(path = "/students/{programId}")
+    @GetMapping(path = "/student/program/{programId}")
     public List<Student> getStudentsByProgramId(@PathVariable String programId) {
         return studentRepository.findStudentByProgramId(programId);
     }
@@ -41,7 +41,7 @@ public class StudentRestController {
      * @param code is student code
      * @return Optional<Student>
      */
-    @GetMapping(path = "/students/{code}")
+    @GetMapping(path = "/student/{code}")
     public Optional<Student> getStudentByCode(@PathVariable String code) {
         return studentRepository.findStudentByCode(code);
     }

@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
+import {Payment} from "../models/app.models";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class PaymentsService {
   constructor(private http: HttpClient) { }
 
   getPayments() {
-    return this.http.get(environment.backendHost + 'payments/all')
+    return this.http.get<Array<Payment>>(environment.backendHost + 'payments/all')
   }
 
   setPayments(payments: any) {
