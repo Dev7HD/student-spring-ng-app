@@ -14,6 +14,7 @@ import {AuthorizationGuard} from "./guards/authorization.guard";
 import {UpdatePaymentStatusComponent} from "./update-payment-status/update-payment-status.component";
 import {StudentDetailsComponent} from "./student-details/student-details.component";
 import {NewPaymentComponent} from "./new-payment/new-payment.component";
+import {PaymentReciptComponent} from "./payment-recipt/payment-recipt.component";
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -37,9 +38,10 @@ const routes: Routes = [
         canActivate: [AuthorizationGuard], data: {roles: ['ADMIN']}
       },
       {path: "payments", component: PaymentsComponent},
+      {path: "payment-recipt/:id", component: PaymentReciptComponent},
       {path: "students", component: StudentsComponent},
       {path: "student-details/:code", component: StudentDetailsComponent},
-      {path: "update-status", component: UpdatePaymentStatusComponent,
+      {path: "update-status/:paymentid", component: UpdatePaymentStatusComponent,
         canActivate: [AuthorizationGuard], data: {roles: ['ADMIN']}}
     ]},
 

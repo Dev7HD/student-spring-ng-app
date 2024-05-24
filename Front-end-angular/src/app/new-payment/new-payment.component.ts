@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {PaymentType} from "../models/app.models";
 import {StudentsService} from "../services/students.service";
+import {MatDialog} from "@angular/material/dialog";
+import {NewPaymentDialogComponent} from "../dialogs/new-payment-dialog/new-payment-dialog.component";
 
 @Component({
   selector: 'app-new-payment',
@@ -13,16 +15,18 @@ export class NewPaymentComponent implements OnInit{
   paymentFormGroup!: FormGroup;
   studentCode!: string;
   types: string[] = [];
-  pdfFileUrl!: any;
+  public pdfFileUrl!: any;
   showProgress!: any;
   constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute,
-              private studentService: StudentsService) {}
+              private studentService: StudentsService,
+              private dialog: MatDialog) {}
 
     ngOnInit(): void {
       for (let i in PaymentType){
         let value = PaymentType[i];
-        if(typeof value === 'string')
+        if(typeof value === 'string'){
           this.types.push(value);
+        }
       }
         this.studentCode = this.activeRoute.snapshot.params['studentCode'];
         this.paymentFormGroup = this.formBuilder.group({
@@ -58,10 +62,15 @@ export class NewPaymentComponent implements OnInit{
     formData.append("studentCode", this.studentCode)
     this.studentService.savePayment(formData).subscribe({
       next: value => {
-        alert("Payment saved")
+        this.studentService.studentCode = this.studentCode;
+        this.dialog.open(NewPaymentDialogComponent)
       }, error: err => {
         console.error(err)
       }
     })
+  }
+
+  successLog() {
+    console.log("pdf successfully loaded")
   }
 }

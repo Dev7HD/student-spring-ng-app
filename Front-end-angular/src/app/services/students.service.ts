@@ -7,6 +7,7 @@ import {Payment, Student} from "../models/app.models";
   providedIn: 'root'
 })
 export class StudentsService {
+  studentCode!: string;
 
   constructor(private http: HttpClient) { }
 

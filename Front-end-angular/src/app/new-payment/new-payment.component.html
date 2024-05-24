@@ -7,7 +7,7 @@
       <mat-form-field>
         <mat-label>Payment date</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="date">
-        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -31,8 +31,31 @@
         <input matInput readonly formControlName="fileName">
         <input type="file" hidden #f_input (change)="selectFile($event)" accept="application/pdf">
       </mat-form-field>
-      <button mat-button (click)="savePayment()">Save payment</button>
+      <button mat-raised-button (click)="savePayment()">Save payment</button>
     </mat-card-content>
   </mat-card>
 
+  <mat-card *ngIf="pdfFileUrl" class="pdf-card">
+    <mat-card-header>
+      <mat-card-title>Payment receipt preview</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <pdf-viewer
+        [src]="pdfFileUrl"
+        [render-text]="true"
+        [original-size]="true"
+        [external-link-target]="'blank'"
+        [fit-to-page]="true"
+        [rotation]="0"
+        [zoom]="1"
+        [zoom-scale]="'page-width'"
+        [show-all]="true"
+        [render-text-mode]="1"
+        [show-borders]="false"
+        [autoresize]="true"
+        class="pdf-viewer"
+        (after-load-complete)="successLog()"
+      ></pdf-viewer>
+    </mat-card-content>
+  </mat-card>
 </div>

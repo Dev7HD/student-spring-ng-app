@@ -41,6 +41,11 @@ import { UpdatePaymentStatusComponent } from './update-payment-status/update-pay
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { NewPaymentComponent } from './new-payment/new-payment.component';
 import { MatDatepickerInput, MatDatepickerModule} from "@angular/material/datepicker";
+import { NewPaymentDialogComponent } from './dialogs/new-payment-dialog/new-payment-dialog.component';
+import { MatGridListModule} from "@angular/material/grid-list";
+import {PdfViewerModule} from "ng2-pdf-viewer";
+import { PaymentReciptComponent } from './payment-recipt/payment-recipt.component';
+import { UpdateStatusDialogComponent } from './dialogs/update-status-dialog/update-status-dialog.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -58,40 +63,45 @@ import { MatDatepickerInput, MatDatepickerModule} from "@angular/material/datepi
     LoadingToastComponent,
     UpdatePaymentStatusComponent,
     StudentDetailsComponent,
-    NewPaymentComponent
+    NewPaymentComponent,
+    NewPaymentDialogComponent,
+    PaymentReciptComponent,
+    UpdateStatusDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatListModule,
-    MatListItem,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatSlideToggleModule,
-    HttpClientModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSort,
-    MatSortHeader,
-    MatProgressBarModule,
-    MatDialogActions,
-    MatDialogClose,
-    MatDialogTitle,
-    MatDialogContent,
-    MatSelectModule,
-    MatOptionModule,
-    MatDatepickerInput,
-    MatDatepickerModule,
-    FormsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTooltipModule,
+        MatMenuModule,
+        MatSidenavModule,
+        MatListModule,
+        MatListItem,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatSlideToggleModule,
+        HttpClientModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSort,
+        MatSortHeader,
+        MatProgressBarModule,
+        MatDialogActions,
+        MatDialogClose,
+        MatDialogTitle,
+        MatDialogContent,
+        MatSelectModule,
+        MatOptionModule,
+        MatDatepickerInput,
+        MatDatepickerModule,
+        FormsModule,
+        MatGridListModule,
+        PdfViewerModule,
+    ],
   providers: [
     provideAnimationsAsync(), AuthGuard, AuthorizationGuard, provideNativeDateAdapter(),
     {provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true}

@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {UpdatePaymentService} from "../services/update-payment.service";
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {environment} from "../../environments/environment";
+import {PaymentsService} from "../services/payments.service";
+import {UpdateStatusDialogComponent} from "../dialogs/update-status-dialog/update-status-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-update-payment-status',
@@ -14,11 +16,12 @@ export class UpdatePaymentStatusComponent implements OnInit{
   paymentId!: string;
   paymentStatus!: string;
 
-  constructor(private dialogService: UpdatePaymentService, private http: HttpClient,
-              private router: Router) {}
+  constructor(private paymentsService: PaymentsService, private http: HttpClient,
+              private router: Router, private activatedRoute: ActivatedRoute,
+              private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.paymentId = this.dialogService.paymentId;
+    this.paymentId = this.activatedRoute.snapshot.params['paymentid'];
     this.http.get(`${environment.backendHost}payment?id=${this.paymentId}`).subscribe({
       next: data => {
         this.payment = data;
@@ -31,10 +34,9 @@ export class UpdatePaymentStatusComponent implements OnInit{
   }
 
   updatePaymentStatus() {
-    this.dialogService.updatePaymentStatus(this.paymentId,this.paymentStatus).subscribe({
+    this.paymentsService.updatePaymentStatus(this.paymentId,this.paymentStatus).subscribe({
       next: data => {
-        this.paymentsPage()
-        console.log(data)
+        this.dialog.open(UpdateStatusDialogComponent);
       }, error: err => {
         console.log(err)
       }

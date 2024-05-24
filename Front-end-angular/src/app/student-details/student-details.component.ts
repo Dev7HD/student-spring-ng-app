@@ -17,6 +17,7 @@ export class StudentDetailsComponent implements OnInit{
   payments!: Payment[];
   public dataSource:any
   public displayedColumns: string[] = ['date','amount','type','status','receipt']
+  public receiptURL!: string;
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -56,5 +57,9 @@ export class StudentDetailsComponent implements OnInit{
 
   newPayment() {
     this.router.navigateByUrl(`/admin/new-payment/${this.code}`)
+  }
+
+  getPaymentRecipt(element: Payment) {
+    this.router.navigateByUrl(`/admin/payment-recipt/${element.id}`)
   }
 }

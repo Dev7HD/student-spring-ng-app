@@ -40,7 +40,6 @@ export class PaymentsComponent implements OnInit{
   }
 
   setPaymentId(id: string) {
-    this.updatePaymentService.paymentId = id;
-    this.router.navigateByUrl('/admin/update-status');
+    this.router.navigateByUrl(`/admin/update-status/${id}`);
   }
 }
