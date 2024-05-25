@@ -1,0 +1,27 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Payment recipt preview
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <pdf-viewer
+        [src]="fileUrl"
+        [render-text]="true"
+        [original-size]="true"
+        [external-link-target]="'blank'"
+        [fit-to-page]="true"
+        [rotation]="0"
+        [zoom]="1"
+        [zoom-scale]="'page-width'"
+        [show-all]="true"
+        [render-text-mode]="1"
+        [show-borders]="false"
+        [autoresize]="true"
+        class="pdf-viewer"
+        (after-load-complete)="successLog()"
+      ></pdf-viewer>
+    </mat-card-content>
+  </mat-card>
+</div>

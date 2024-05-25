@@ -1,0 +1,7 @@
+.pdf-viewer {
+  height: 70vh;
+  width: 100%;
+  display: block;
+  margin: 20px auto;
+  max-width: 1200px;
+}
