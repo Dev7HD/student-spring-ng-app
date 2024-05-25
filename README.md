@@ -1,79 +1,55 @@
-# 🎓 Student Payment Application
+### README.md
 
-Welcome to the Student Payment Application documentation. This application allows you to manage students and their payments efficiently. Below, you'll find detailed information on how to navigate and utilize the various features offered by the application.
+# 📚 Student Payment Application
 
-## 📋 Table of Contents
+Welcome to the Student Payment Application! This application enables efficient management of students and their payments.
 
-- [Features Overview](#-features-overview)
-- [Backend Documentation](#backend-documentation)
-  - [Endpoints](#endpoints)
-  - [Entities](#entities)
-  - [Repositories](#repositories)
-  - [Services](#services)
-  - [Web Controllers](#web-controllers)
-- [Frontend Documentation](#frontend-documentation)
-  - [Components](#components)
-  - [Guards](#guards)
-  - [Angular Services](#angular-services)
-  - [Interceptors](#interceptors)
-  - [Routing](#routing)
-  - [Dependencies](#dependencies)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Contributing](#contributing)
+## 🌟 Features Overview
+- View list of students and their payments
+- Import student and payment lists
+- Retrieve student info by code
+- Filter students by study program
+- Filter payments by status or type
+- Retrieve payment by ID
+- Update payment status
+- Add new student payments
 
-## 🚀 Features Overview
-
-- Visualize list of students and their payments.
-- Import students list and payments list.
-- Check student information by student code.
-- Get students list by their study program.
-- Get payments by status or type.
-- Get payment by ID.
-- Get student payment by student code.
-- Update payment status.
-- Add new student payment.
-
-## Backend Documentation
+## 🛠️ Backend Documentation
 
 ### Endpoints
-
-#### **Check the endpoints using Swagger-UI**
-
-- **GET /students/all**: Retrieve all students.
-- **GET /students/{programId}**: Retrieve students by study program.
-- **GET /students/{code}**: Retrieve student information by student code.
-- **GET /payments/all**: Retrieve all payments.
-- **GET /payments/status/{status}**: Retrieve payments by status.
-- **GET /payments/type/{type}**: Retrieve payments by type.
-- **GET /payment/{id}**: Retrieve payment by ID.
-- **GET /payments/student/{code}**: Retrieve payments by student code.
-- **PUT /payments/{id}**: Update payment status.
-- **POST /payments/new**: Add new student payment.
+Accessible via Swagger-UI:
+- **Students**
+  - `GET /students/all`: Retrieve all students
+  - `GET /students/{programId}`: Retrieve students by program
+  - `GET /students/{code}`: Retrieve student by code
+- **Payments**
+  - `GET /payments/all`: Retrieve all payments
+  - `GET /payments/status/{status}`: Retrieve payments by status
+  - `GET /payments/type/{type}`: Retrieve payments by type
+  - `GET /payment/{id}`: Retrieve payment by ID
+  - `GET /payments/student/{code}`: Retrieve payments by student code
+  - `PUT /payments/{id}`: Update payment status
+  - `POST /payments/new`: Add new payment
 
 ### Entities
-
-- **Student**: Represents a student entity with attributes like ID, first name, last name, email, code, and program ID.
-- **Payment**: Represents a payment entity with attributes like ID, date, amount, type, status, and receipt.
+- **Student**: Attributes include ID, first name, last name, email, code, program ID
+- **Payment**: Attributes include ID, date, amount, type, status, receipt
 
 ### Repositories
+- **StudentRepository**: Access student data
+- **PaymentRepository**: Access payment data
 
-- **StudentRepository**: Repository for accessing student data.
-- **PaymentRepository**: Repository for accessing payment data.
-
-### Angular Services
-
-- **PaymentService**: Service for handling payment-related operations.
+### Services
+- **StudentService**: Business logic for students
+- **PaymentService**: Business logic for payments
 
 ### Web Controllers
+- **StudentRestController**: Handles student-related requests
+- **PaymentRestController**: Handles payment-related requests
 
-- **PaymentRestController**: REST controller for handling payment-related requests.
-- **StudentRestController**: REST controller for handling student-related requests.
-
-## Frontend Documentation
+## 💻 Frontend Documentation
 
 ### Components
-
 - **Admin Template Component**: Provides the main layout for the admin panel.
 - **Login Component**: Allows users to log in to the application.
 - **Dashboard Component**: Displays dashboard.
@@ -83,53 +59,87 @@ Welcome to the Student Payment Application documentation. This application allow
 - **Loading Toast Component**: Provides a popup loading toast.
 - **Payments Component**: Displays a list of payments.
 - **Students Component**: Displays a list of students.
-- **Profile Component**: Displays a user profile.
+- **Profile Component**: User profile.
+- **Student List Component**: Display list of students.
+- **Student Payments Component**: Display student payments.
+- **Student Details Component**: Displays student information and all his payments.
+- **Student Payment Details Component**: Display payment details.
+- **Payment List Component**: Display list of payments with pagination.
+- **Payment Details Component**: Display details of a single payment.
+- **New Payment Component**: Add new payment made by a student.
+- **Payment Recipt Component**: Allows user to view the payment receipt.
+- **Update Payment Status Component**: Form to update payment status.
+- **New Payment Dialog Component**: Popup appears when new payment successfully saved.
+- **Update Status Dialog Component**: Popup appears when payment status successfully updated.
 
 ### Guards
-
-- **Auth Guard**: Prevents unauthorized access to certain routes.
-- **Authorization Guard**: Restricts access based on user roles.
+- **Auth Guard**: Protects routes from unauthorized access
+- **Authorization Guard**: Restricts access based on roles
 
 ### Services
-
-- **Authentication Service**: Manages user authentication.
-- **Toast Service**: Displays toast notifications.
+- **Authentication Service**: Manages user authentication
+- **Toast Service**: Displays notifications
+- **Student Service**: Manages student data
+- **Payment Service**: Manages payment data
 
 ### Interceptors
-
-- **App Interceptor**: Intercepts HTTP requests and responses.
+- **App Interceptor**: Intercepts HTTP requests/responses
 
 ### Routing
-
-- Defines application routes and guards.
+Defines application routes and applies guards.
 
 ### Dependencies
+- **Angular Material**: UI components
+- **RxJS**: Reactive programming
+- **Angular Forms**: Form handling
+- **HttpClientModule**: HTTP client
 
-- Angular Material: UI components library.
-- RxJS: Reactive programming library.
-- Angular Forms: Form handling library.
-- HttpClientModule: HTTP client module.
+## 🚀 Getting Started
+### Backend
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Dev7HD/student-spring-ng-app.git
+   ```
+2. Navigate to the backend directory:
+   ```bash
+   cd student-spring-ng-app/backend
+   ```
+3. Build the project with Maven:
+   ```bash
+   mvn clean install
+   ```
+4. Run the Spring Boot application:
+   ```bash
+   mvn spring-boot:run
+   ```
 
-## Getting Started
+### Frontend
+1. Navigate to the frontend directory:
+   ```bash
+   cd student-spring-ng-app/frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the Angular development server:
+   ```bash
+   ng serve
+   ```
 
-To get started with the application, follow these steps:
+## 📈 Usage
+1. Log in using your credentials.
+2. Navigate through the sections to manage students and payments.
+3. Import student and payment lists.
+4. Retrieve student details by code.
+5. Update payment statuses.
+6. Add new payments.
 
-1. Clone the repository to your local machine.
-2. Navigate to the backend directory and run the Spring Boot application.
-3. Navigate to the frontend directory and install Angular dependencies.
-4. Start the Angular development server.
+## 🤝 Contribution
+Contributions are welcome! Please submit a pull request or open an issue to discuss your changes.
 
-## Usage
+## 📄 License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Once the application is running, you can:
-
-- Log in with your credentials.
-- Navigate through different sections to visualize student and payment information.
-- Import student and payment lists.
-- Check student details by code.
-- Update payment status.
-- Add new student payments.
-
-## Contributing
-
-Contributions to the Student Payment Application are welcome! Feel free to submit pull requests or report any issues you encounter.
+## ℹ️ About
+Developed by [Dev7HD](https://github.com/Dev7HD).
