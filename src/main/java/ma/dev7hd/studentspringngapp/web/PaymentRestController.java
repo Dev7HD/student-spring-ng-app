@@ -2,7 +2,7 @@ package ma.dev7hd.studentspringngapp.web;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.AllArgsConstructor;
-import ma.dev7hd.studentspringngapp.dtos.NewPaymentDTO;
+import ma.dev7hd.studentspringngapp.dtos.PaymentDTO;
 import ma.dev7hd.studentspringngapp.entities.Payment;
 import ma.dev7hd.studentspringngapp.enumirat.PaymentStatus;
 import ma.dev7hd.studentspringngapp.enumirat.PaymentType;
@@ -86,14 +86,14 @@ public class PaymentRestController {
 
     /**
      * Add new payment
-     * @param newPaymentDTO is the object that contains the payment information
+     * @param paymentDTO is the object that contains the payment information
      * @param file is the payment receipt
      * @return ResponseEntity<Payment>
      * @throws IOException in case exception on uploading receipt
      */
     @PostMapping(value = "/payments/new", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Payment> addNewPayment(NewPaymentDTO newPaymentDTO, @Parameter(description = "PDF to upload") @RequestPart(value = "file")MultipartFile file) throws IOException {
-        return paymentService.newPayment(newPaymentDTO,file);
+    public ResponseEntity<Payment> addNewPayment(PaymentDTO paymentDTO, @Parameter(description = "PDF to upload") @RequestPart(value = "file")MultipartFile file) throws IOException {
+        return paymentService.newPayment(paymentDTO,file);
     }
 
     /**

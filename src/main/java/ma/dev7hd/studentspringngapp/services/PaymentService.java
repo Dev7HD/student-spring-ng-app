@@ -1,7 +1,7 @@
 package ma.dev7hd.studentspringngapp.services;
 
 import lombok.AllArgsConstructor;
-import ma.dev7hd.studentspringngapp.dtos.NewPaymentDTO;
+import ma.dev7hd.studentspringngapp.dtos.PaymentDTO;
 import ma.dev7hd.studentspringngapp.entities.Payment;
 import ma.dev7hd.studentspringngapp.entities.Student;
 import ma.dev7hd.studentspringngapp.enumirat.PaymentStatus;
@@ -28,13 +28,13 @@ public class PaymentService {
     private PaymentRepository paymentRepository;
     private StudentRepository studentRepository;
 
-    public ResponseEntity<Payment> newPayment(NewPaymentDTO newPaymentDTO,
+    public ResponseEntity<Payment> newPayment(PaymentDTO paymentDTO,
                                               MultipartFile file) throws IOException {
         if (!file.getContentType().equals(MediaType.APPLICATION_PDF_VALUE)) {
             return ResponseEntity.badRequest().build();
         }
 
-        Optional<Student> optionalStudent = studentRepository.findStudentByCode(newPaymentDTO.getStudentCode());
+        Optional<Student> optionalStudent = studentRepository.findStudentByCode(paymentDTO.getStudentCode());
         if (optionalStudent.isPresent()) {
             Student student = optionalStudent.get();
             Path folderPath = Paths.get(System.getProperty("user.home"),"data","payments");
@@ -45,10 +45,10 @@ public class PaymentService {
             Path filePath = Paths.get(folderPath.toString(),fileName+".pdf");
             Files.copy(file.getInputStream(),filePath);
             Payment payment = Payment.builder()
-                    .amount(newPaymentDTO.getAmount())
+                    .amount(paymentDTO.getAmount())
                     .student(student)
-                    .type(newPaymentDTO.getPaymentType())
-                    .date(newPaymentDTO.getDate())
+                    .type(paymentDTO.getPaymentType())
+                    .date(paymentDTO.getDate())
                     .status(PaymentStatus.CREATED)
                     .receipt(filePath.toUri().toString())
                     .build();

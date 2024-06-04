@@ -4,6 +4,7 @@ import ma.dev7hd.studentspringngapp.entities.Payment;
 import ma.dev7hd.studentspringngapp.entities.Student;
 import ma.dev7hd.studentspringngapp.enumirat.PaymentStatus;
 import ma.dev7hd.studentspringngapp.enumirat.PaymentType;
+import ma.dev7hd.studentspringngapp.enumirat.ProgramId;
 import ma.dev7hd.studentspringngapp.repositories.PaymentRepository;
 import ma.dev7hd.studentspringngapp.repositories.StudentRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -28,28 +29,40 @@ public class StudentSpringNgAppApplication {
                             .lastName("Damiri")
                             .code("1210113571")
                             .email("hamza.damiri@edu.ma")
-                            .programId("II-BDCC")
+                            .programId(Math.random() > 0.2 ? ProgramId.ISI
+                                    : Math.random() > 0.5 ? ProgramId.GI
+                                    : Math.random() > 0.8 ? ProgramId.MF
+                                    : ProgramId.IIR)
                     .build());
             studentRepository.save(Student.builder()
                     .firstName("Yassin")
                     .lastName("FADIL")
                     .code("1425161765")
                     .email("yassin.fadil@edu.ma")
-                    .programId("II-GLCID")
+                    .programId(Math.random() > 0.2 ? ProgramId.ISI
+                            : Math.random() > 0.5 ? ProgramId.GI
+                            : Math.random() > 0.8 ? ProgramId.MF
+                            : ProgramId.IIR)
                     .build());
             studentRepository.save(Student.builder()
                     .firstName("Hind")
                     .lastName("Bakhtari")
                     .code("1210113534")
                     .email("hind.bakhtari@edu.ma")
-                    .programId("SMC")
+                    .programId(Math.random() > 0.2 ? ProgramId.ISI
+                            : Math.random() > 0.5 ? ProgramId.GI
+                            : Math.random() > 0.8 ? ProgramId.MF
+                            : ProgramId.IIR)
                     .build());
             studentRepository.save(Student.builder()
                     .firstName("Widad")
                     .lastName("Damiri")
                     .code("1627365487")
                     .email("widad.damiri@edu.ma")
-                    .programId("SMAI")
+                    .programId(Math.random() > 0.2 ? ProgramId.ISI
+                            : Math.random() > 0.5 ? ProgramId.GI
+                            : Math.random() > 0.8 ? ProgramId.MF
+                            : ProgramId.IIR)
                     .build());
             studentRepository.findAll().forEach(student -> {
                 for (int i = 0; i < 4; i++) {

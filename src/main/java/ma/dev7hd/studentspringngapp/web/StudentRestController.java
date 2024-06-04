@@ -1,12 +1,13 @@
 package ma.dev7hd.studentspringngapp.web;
 
 import lombok.AllArgsConstructor;
+import ma.dev7hd.studentspringngapp.dtos.StudentDTO;
 import ma.dev7hd.studentspringngapp.entities.Student;
+import ma.dev7hd.studentspringngapp.enumirat.ProgramId;
 import ma.dev7hd.studentspringngapp.repositories.StudentRepository;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import ma.dev7hd.studentspringngapp.services.StudentService;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +17,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class StudentRestController {
     private StudentRepository studentRepository;
+    private StudentService studentService;
 
     /**
      * Find all students
@@ -32,7 +34,7 @@ public class StudentRestController {
      * @return List<Student>
      */
     @GetMapping(path = "/student/program/{programId}")
-    public List<Student> getStudentsByProgramId(@PathVariable String programId) {
+    public List<Student> getStudentsByProgramId(@PathVariable ProgramId programId) {
         return studentRepository.findStudentByProgramId(programId);
     }
 
@@ -46,5 +48,24 @@ public class StudentRestController {
         return studentRepository.findStudentByCode(code);
     }
 
+    /**
+     * Add new student
+     * @param studentDTO
+     * @return ResponseEntity<StudentDTO>
+     */
+    @PostMapping(path = "/students/new")
+    public ResponseEntity<StudentDTO> newStudent(@RequestBody StudentDTO studentDTO){
+        return studentService.addStudent(studentDTO);
+    }
+
+    /**
+     * Update student
+     * @param studentDTO
+     * @return ResponseEntity<StudentDTO>
+     */
+    @PutMapping("/student/edit")
+    public ResponseEntity<StudentDTO> updateStudent(@RequestBody StudentDTO studentDTO){
+        return studentService.editStudent(studentDTO);
+    }
 
 }
