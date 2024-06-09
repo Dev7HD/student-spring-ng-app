@@ -68,4 +68,9 @@ public class StudentRestController {
         return studentService.editStudent(studentDTO);
     }
 
+    @DeleteMapping("/student/delete/{code}")
+    public ResponseEntity deleteStudent(@PathVariable String code){
+        return studentService.deleteStudent(code);
+    }
+
 }

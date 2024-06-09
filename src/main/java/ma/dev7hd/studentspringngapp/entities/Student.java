@@ -20,6 +20,7 @@ public class Student {
     private String email;
     @Column(unique = true)
     private String code;
+    @Enumerated(EnumType.STRING)
     private ProgramId programId;
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

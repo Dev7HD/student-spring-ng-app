@@ -79,4 +79,8 @@ public class PaymentService {
         return null;
     }
 
+    public void deleteStudentPayments(String id){
+        paymentRepository.deleteAllByStudentId(id);
+    }
+
 }

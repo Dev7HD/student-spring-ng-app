@@ -10,5 +10,6 @@ import java.util.Optional;
 public interface StudentRepository extends JpaRepository<Student,String> {
     List<Student> findStudentByProgramId(ProgramId programId);
     Optional<Student> findStudentByCode(String code);
+    void deleteByCode(String code);
 }
 

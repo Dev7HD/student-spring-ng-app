@@ -25,10 +25,10 @@ public class StudentSpringNgAppApplication {
     CommandLineRunner commandLineRunner(StudentRepository studentRepository, PaymentRepository paymentRepository) {
         return args -> {
             studentRepository.save(Student.builder()
-                            .firstName("Hamza")
-                            .lastName("Damiri")
-                            .code("1210113571")
-                            .email("hamza.damiri@edu.ma")
+                            .firstName("Oussama")
+                            .lastName("Bissi")
+                            .code("11223344")
+                            .email("oussama.bissi@edu.ma")
                             .programId(Math.random() > 0.2 ? ProgramId.ISI
                                     : Math.random() > 0.5 ? ProgramId.GI
                                     : Math.random() > 0.8 ? ProgramId.MF
@@ -45,20 +45,20 @@ public class StudentSpringNgAppApplication {
                             : ProgramId.IIR)
                     .build());
             studentRepository.save(Student.builder()
-                    .firstName("Hind")
-                    .lastName("Bakhtari")
-                    .code("1210113534")
-                    .email("hind.bakhtari@edu.ma")
+                    .firstName("Asmae")
+                    .lastName("Bennani")
+                    .code("44556677")
+                    .email("asmae.bennani@edu.ma")
                     .programId(Math.random() > 0.2 ? ProgramId.ISI
                             : Math.random() > 0.5 ? ProgramId.GI
                             : Math.random() > 0.8 ? ProgramId.MF
                             : ProgramId.IIR)
                     .build());
             studentRepository.save(Student.builder()
-                    .firstName("Widad")
-                    .lastName("Damiri")
+                    .firstName("Hanan")
+                    .lastName("Moussa")
                     .code("1627365487")
-                    .email("widad.damiri@edu.ma")
+                    .email("hanan.moussa@edu.ma")
                     .programId(Math.random() > 0.2 ? ProgramId.ISI
                             : Math.random() > 0.5 ? ProgramId.GI
                             : Math.random() > 0.8 ? ProgramId.MF

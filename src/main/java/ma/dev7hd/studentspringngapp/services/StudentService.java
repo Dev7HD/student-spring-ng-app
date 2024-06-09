@@ -14,6 +14,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class StudentService {
     private StudentRepository studentRepository;
+    private PaymentService paymentService;
     private IAppMapper iAppMapper;
 
     public ResponseEntity<StudentDTO> addStudent(StudentDTO studentDTO){
@@ -36,7 +37,18 @@ public class StudentService {
             student.setProgramId(studentDTO.getProgramId());
             return ResponseEntity.ok(iAppMapper.toStudentDTO(studentRepository.save(student)));
         } else {
-            return ResponseEntity.notFound().build();
+            return null;
+        }
+    }
+
+    public ResponseEntity deleteStudent(String code){
+        Student student = studentRepository.findStudentByCode(code).orElse(null);
+        if (student != null){
+            paymentService.deleteStudentPayments(student.getId());
+            studentRepository.deleteById(student.getId());
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.badRequest().build();
         }
     }
 }
